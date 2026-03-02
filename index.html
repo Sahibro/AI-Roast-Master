@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Roast Master 2026 🔥</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #000; color: #fff; font-family: 'Courier New', Courier, monospace; }
+        .roast-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 2px solid #ff4d4d; box-shadow: 0 0 20px #ff4d4d55; }
+        .glitch { animation: glitch 0.5s infinite; text-shadow: 2px 2px #ff0000; }
+        @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6 overflow-x-hidden">
+
+    <div class="text-center mb-8">
+        <h1 class="text-5xl font-black glitch text-red-600 mb-2 uppercase">AI Roast Master</h1>
+        <p class="text-gray-400">Enter your name if you have guts. 💀</p>
+    </div>
+
+    <!-- Input Section -->
+    <div id="input-area" class="w-full max-w-md space-y-4">
+        <input id="userName" type="text" placeholder="Tera Naam Kya Hai?..." class="w-full p-4 bg-gray-900 border-2 border-red-900 rounded-xl focus:border-red-500 outline-none text-xl">
+        <button onclick="startRoast()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+            ROAST ME! 🔥
+        </button>
+    </div>
+
+    <!-- Roast Display (Hidden Initially) -->
+    <div id="roast-area" class="hidden w-full max-w-md roast-card p-8 rounded-3xl text-center relative">
+        <p id="roast-text" class="text-2xl font-bold italic text-yellow-400 mb-6">"Fetching your failure from the cloud..."</p>
+        <div class="flex flex-col gap-3">
+            <button onclick="shareRoast()" class="bg-green-600 p-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                Share on WhatsApp (Flex My Roast) 🏆
+            </button>
+            <button onclick="location.reload()" class="text-sm text-gray-500 underline">Try Someone Else</button>
+        </div>
+    </div>
+
+    <script>
+        const roasts = [
+            "Oye [NAME], tere chehre ko dekh ke toh AI ne bhi browser band kar diya!",
+            "[NAME], tu wahi hai na jo 'Free Recharge' wale links par click karta hai? 🤡",
+            "Error 404: [NAME]'s brain not found. Please try again in next life.",
+            "[NAME], tere dimaag ki speed 2G hai aur tu 5G ke zamane mein ghoom raha hai.",
+            "Agar 'Useless' ka award hota, toh [NAME] tu usmein bhi second aata!"
+        ];
+
+        function startRoast() {
+            const name = document.getElementById('userName').value;
+            if(!name) return alert("Naam toh daal darpok!");
+
+            document.getElementById('input-area').classList.add('hidden');
+            document.getElementById('roast-area').classList.remove('hidden');
+
+            // Random Roast Selector (Isse AI ki tarah feel aayegi)
+            let randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
+            document.getElementById('roast-text').innerText = randomRoast.replace("[NAME]", name);
+        }
+
+        function shareRoast() {
+            const roast = document.getElementById('roast-text').innerText;
+            const waText = `🔥 AI ROAST MASTER 2026 %0A%0A"${roast}" %0A%0AGet Roasted Here: ${window.location.href}`;
+            window.open(`https://api.whatsapp.com{waText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
